@@ -13,6 +13,8 @@ int main()
 	Clock clock;
 	Time time1 = clock.getElapsedTime();
 
+	int counter1 = 0;
+
 	RectangleShape background(Vector2f(1400, 800));
 	background.setPosition(0, 0);
 	background.setFillColor(Color(204, 51, 77));
@@ -29,12 +31,12 @@ int main()
 	projectile.setPosition(x_position, y_position);
 	projectile.setFillColor(Color(51, 153, 204));
 
-	double x_velocity = 180;
-	double y_velocity = -400;
+	double x_velocity = 150;
+	double y_velocity = -300;
 	double y_accel = 100;
 
 	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen");
-	//window.setFramerateLimit(30);
+	//window.setFramerateLimit(200);
 
 	while (window.isOpen()){
 
@@ -54,12 +56,27 @@ int main()
 
 		window.display();
 
-		time1 = clock.getElapsedTime();
-		clock.restart();
-		x_position += (x_velocity * time1.asSeconds());
-		y_velocity += (y_accel * time1.asSeconds());
-		y_position += (y_velocity * time1.asSeconds());
+		if (Keyboard::isKeyPressed(Keyboard::Space)){
+			counter1 = 1;
+			clock.restart();
+		}
 
+		if (counter1 == 1){
+			time1 = clock.getElapsedTime();
+			clock.restart();
+			x_position += (x_velocity * time1.asSeconds());
+			y_velocity += (y_accel * time1.asSeconds());
+			y_position += (y_velocity * time1.asSeconds());
+		}
+
+		if (y_position > 790){
+			x_position = 10;
+			y_position = 790;
+			x_velocity = 150;
+			y_velocity = -300;
+			y_accel = 100;
+			counter1 = 0;
+		}
 		projectile.setPosition(x_position, y_position);
 		//cout << x_position << " " << y_position << endl;
 
