@@ -8,6 +8,44 @@
 using namespace std;
 using namespace sf;
 
+class objTank
+{
+public:
+	string name;
+	int x_pos;
+	int y_pos;
+
+	Sprite sprite1;
+};
+
+class objProjec
+{
+public:
+	string name;
+	double x_pos;
+	double y_pos;
+	double x_velocity;
+	double y_velocity;
+	double y_accel;
+	double x_posC;
+	double y_posC;
+	double x_velocityC;
+	double y_velocityC;
+	double y_accelC;
+	int type = 0;
+
+	void projecReset(double x_posU, double y_posU, double x_velocityU, double y_velocityU, double y_accelU)
+	{
+		x_pos = x_posU;
+		y_pos = y_posU;
+		x_velocity = x_velocityU;
+		y_velocity = y_velocityU;
+		y_accel = y_accelU;
+	}
+
+	RectangleShape projectile;
+};
+
 int main()
 {
 	Clock clock;
@@ -19,24 +57,26 @@ int main()
 	background.setPosition(0, 0);
 	background.setFillColor(Color(204, 51, 77));
 
-
 	RectangleShape ground(Vector2f(1400, 200));
 	ground.setPosition(0, 600);
 	ground.setFillColor(Color(51, 153, 204));
 
-	double x_position = 10;
-	double y_position = 790;
-
-	RectangleShape projectile(Vector2f(10, 10));
-	projectile.setPosition(x_position, y_position);
-	projectile.setFillColor(Color(51, 153, 204));
-
-	double x_velocity = 150;
-	double y_velocity = -300;
-	double y_accel = 100;
+	objProjec mainProj;
+	mainProj.x_posC = 10;
+	mainProj.y_posC = 790;
+	mainProj.x_velocityC = 150;
+	mainProj.y_velocityC = -300;
+	mainProj.y_accelC = 100;
+	mainProj.x_pos = mainProj.x_posC;
+	mainProj.y_pos = mainProj.y_posC;
+	mainProj.x_velocity = mainProj.x_velocityC;
+	mainProj.y_velocity = mainProj.y_velocityC;
+	mainProj.y_accel = mainProj.y_accelC;
+	mainProj.projectile.setSize(Vector2f(10, 10));
+	mainProj.projectile.setPosition(mainProj.x_posC, mainProj.y_posC);
+	mainProj.projectile.setFillColor(Color(51, 153, 204));
 
 	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen");
-	//window.setFramerateLimit(200);
 
 	while (window.isOpen()){
 
@@ -52,7 +92,7 @@ int main()
 
 		window.draw(background);
 		//window.draw(ground);
-		window.draw(projectile);
+		window.draw(mainProj.projectile);
 
 		window.display();
 
@@ -64,23 +104,18 @@ int main()
 		if (counter1 == 1){
 			time1 = clock.getElapsedTime();
 			clock.restart();
-			x_position += (x_velocity * time1.asSeconds());
-			y_velocity += (y_accel * time1.asSeconds());
-			y_position += (y_velocity * time1.asSeconds());
+			mainProj.x_pos += (mainProj.x_velocity * time1.asSeconds());
+			mainProj.y_velocity += (mainProj.y_accel * time1.asSeconds());
+			mainProj.y_pos += (mainProj.y_velocity * time1.asSeconds());
 		}
 
-		if (y_position > 790){
-			x_position = 10;
-			y_position = 790;
-			x_velocity = 150;
-			y_velocity = -300;
-			y_accel = 100;
+		if (mainProj.y_pos > 790){
+			mainProj.projecReset(mainProj.x_posC, mainProj.y_posC, mainProj.x_velocityC, mainProj.y_velocityC, mainProj.y_accelC);
 			counter1 = 0;
 		}
-		projectile.setPosition(x_position, y_position);
-		//cout << x_position << " " << y_position << endl;
+
+		mainProj.projectile.setPosition(mainProj.x_pos, mainProj.y_pos);
 
 	}
-
 	return 10;
 }
