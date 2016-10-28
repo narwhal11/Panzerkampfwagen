@@ -33,14 +33,24 @@ public:
 	double y_velocityC;
 	double y_accelC;
 	int type = 0;
+	int counter1 = 0;
 
-	void projecReset(double x_posU, double y_posU, double x_velocityU, double y_velocityU, double y_accelU)
+	void projecReset()
 	{
-		x_pos = x_posU;
-		y_pos = y_posU;
-		x_velocity = x_velocityU;
-		y_velocity = y_velocityU;
-		y_accel = y_accelU;
+		x_pos = x_posC;
+		y_pos = y_posC;
+		x_velocity = x_velocityC;
+		y_velocity = y_velocityC;
+		y_accel = y_accelC;
+		projectile.setPosition(x_posC, y_posC);
+	}
+
+	void moveProj(Time time1)
+	{
+		x_pos += (x_velocity * time1.asSeconds());
+		y_velocity += (y_accel * time1.asSeconds());
+		y_pos += (y_velocity * time1.asSeconds());
+		projectile.setPosition(x_pos,y_pos);
 	}
 
 	RectangleShape projectile;
@@ -48,10 +58,9 @@ public:
 
 int main()
 {
+
 	Clock clock;
 	Time time1 = clock.getElapsedTime();
-
-	int counter1 = 0;
 
 	RectangleShape background(Vector2f(1400, 800));
 	background.setPosition(0, 0);
@@ -61,20 +70,20 @@ int main()
 	ground.setPosition(0, 600);
 	ground.setFillColor(Color(51, 153, 204));
 
-	objProjec mainProj;
-	mainProj.x_posC = 10;
-	mainProj.y_posC = 790;
-	mainProj.x_velocityC = 150;
-	mainProj.y_velocityC = -300;
-	mainProj.y_accelC = 100;
-	mainProj.x_pos = mainProj.x_posC;
-	mainProj.y_pos = mainProj.y_posC;
-	mainProj.x_velocity = mainProj.x_velocityC;
-	mainProj.y_velocity = mainProj.y_velocityC;
-	mainProj.y_accel = mainProj.y_accelC;
-	mainProj.projectile.setSize(Vector2f(10, 10));
-	mainProj.projectile.setPosition(mainProj.x_posC, mainProj.y_posC);
-	mainProj.projectile.setFillColor(Color(51, 153, 204));
+	//int amtProj = 5;
+
+	objProjec projVec[5];
+	for (int a = 0; a < 5; a++)
+	{
+		projVec[a].x_posC = 10;
+		projVec[a].y_posC = 790;
+		projVec[a].x_velocityC = 150 + (a * 5);
+		projVec[a].y_velocityC = -300;
+		projVec[a].y_accelC = 100;
+		projVec[a].projecReset();
+		projVec[a].projectile.setSize(Vector2f(10, 10));
+		projVec[a].projectile.setFillColor(Color(51, 153, 204));
+	}
 
 	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen");
 
@@ -92,29 +101,40 @@ int main()
 
 		window.draw(background);
 		//window.draw(ground);
-		window.draw(mainProj.projectile);
+		for (int a = 0; a < 5; a++)
+		{
+			window.draw(projVec[a].projectile);
+		}
+
 
 		window.display();
 
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
-			counter1 = 1;
+			for (int a = 0; a < 5; a++)
+			{
+				projVec[a].counter1 = 1;
+			}
+
 			clock.restart();
 		}
 
-		if (counter1 == 1){
-			time1 = clock.getElapsedTime();
-			clock.restart();
-			mainProj.x_pos += (mainProj.x_velocity * time1.asSeconds());
-			mainProj.y_velocity += (mainProj.y_accel * time1.asSeconds());
-			mainProj.y_pos += (mainProj.y_velocity * time1.asSeconds());
+
+		for (int a = 0; a < 5; a++)
+		{
+			if (projVec[a].counter1 == 1){
+				time1 = clock.getElapsedTime();
+				clock.restart();
+				projVec[a].moveProj(time1);
+			}
 		}
 
-		if (mainProj.y_pos > 790){
-			mainProj.projecReset(mainProj.x_posC, mainProj.y_posC, mainProj.x_velocityC, mainProj.y_velocityC, mainProj.y_accelC);
-			counter1 = 0;
+		for (int a = 0; a < 5; a++)
+		{
+			if (projVec[a].y_pos > 790){
+				projVec[a].projecReset();
+				projVec[a].counter1 = 0;
+			}
 		}
-
-		mainProj.projectile.setPosition(mainProj.x_pos, mainProj.y_pos);
 
 	}
 	return 10;

@@ -1,10 +1,10 @@
-﻿Build started 10/26/2016 9:36:57 AM.
+﻿Build started 10/28/2016 9:31:49 AM.
      1>Project "E:\GitHub Projects\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          E:\Programs\VisualStudio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
-     1>e:\github projects\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\source.cpp(76): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>e:\github projects\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\source.cpp(117): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\github projects\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\source.cpp(45): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\github projects\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\source.cpp(53): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
        Link:
          E:\Programs\VisualStudio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\GitHub Projects\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.exe" /INCREMENTAL /NOLOGO "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\GitHub Projects\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\GitHub Projects\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.lib" /MACHINE:X86 Debug\Source.obj
          Panzerkampfwagen.vcxproj -> E:\GitHub Projects\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.exe
@@ -12,4 +12,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.95
+Time Elapsed 00:00:00.54
