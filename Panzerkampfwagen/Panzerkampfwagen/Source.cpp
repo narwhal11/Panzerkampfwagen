@@ -34,6 +34,8 @@ public:
 	double y_accelC;
 	int type = 0;
 	int counter1 = 0;
+	Clock clock;
+	Time time;
 
 	void projecReset()
 	{
@@ -58,10 +60,6 @@ public:
 
 int main()
 {
-
-	Clock clock;
-	Time time1 = clock.getElapsedTime();
-
 	RectangleShape background(Vector2f(1400, 800));
 	background.setPosition(0, 0);
 	background.setFillColor(Color(204, 51, 77));
@@ -73,9 +71,9 @@ int main()
 	//int amtProj = 5;
 
 	objProjec projVec[5];
-	for (int a = 0; a < 5; a++)
+	for (int a = 0; a < 4; a++)
 	{
-		projVec[a].x_posC = 10;
+		projVec[a].x_posC = 10 + (a * 20);
 		projVec[a].y_posC = 790;
 		projVec[a].x_velocityC = 150 + (a * 5);
 		projVec[a].y_velocityC = -300;
@@ -101,7 +99,7 @@ int main()
 
 		window.draw(background);
 		//window.draw(ground);
-		for (int a = 0; a < 5; a++)
+		for (int a = 0; a < 4; a++)
 		{
 			window.draw(projVec[a].projectile);
 		}
@@ -110,25 +108,24 @@ int main()
 		window.display();
 
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
-			for (int a = 0; a < 5; a++)
+			for (int a = 0; a < 4; a++)
 			{
 				projVec[a].counter1 = 1;
+				projVec[a].clock.restart();
 			}
-
-			clock.restart();
 		}
 
 
-		for (int a = 0; a < 5; a++)
+		for (int a = 0; a < 4; a++)
 		{
 			if (projVec[a].counter1 == 1){
-				time1 = clock.getElapsedTime();
-				clock.restart();
-				projVec[a].moveProj(time1);
+				projVec[a].time = projVec[a].clock.getElapsedTime();
+				projVec[a].clock.restart();
+				projVec[a].moveProj(projVec[a].time);
 			}
 		}
 
-		for (int a = 0; a < 5; a++)
+		for (int a = 0; a < 4; a++)
 		{
 			if (projVec[a].y_pos > 790){
 				projVec[a].projecReset();
