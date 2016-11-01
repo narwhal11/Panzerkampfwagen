@@ -15,7 +15,12 @@ public:
 	int x_pos;
 	int y_pos;
 
-	Sprite sprite1;
+	RectangleShape tank;
+
+	void moveTank()
+	{
+
+	}
 };
 
 class objProjec
@@ -44,7 +49,7 @@ public:
 		x_velocity = x_velocityC;
 		y_velocity = y_velocityC;
 		y_accel = y_accelC;
-		projectile.setPosition(x_posC, y_posC);
+		projectile.setPosition(x_pos, y_pos);
 	}
 
 	void moveProj(Time time1)
@@ -68,9 +73,21 @@ int main()
 	ground.setPosition(0, 600);
 	ground.setFillColor(Color(51, 153, 204));
 
+	objTank tank[2];
+	tank[0].tank.setSize(Vector2f(50, 10));
+	tank[0].x_pos = 40;
+	tank[0].y_pos = 790;
+	tank[0].tank.setPosition(tank[0].x_pos,tank[0].y_pos);
+	tank[0].tank.setFillColor(Color(244,86,66));
+	tank[1].tank.setSize(Vector2f(50, 10));
+	tank[1].x_pos = 1320;
+	tank[1].y_pos = 790;
+	tank[1].tank.setPosition(tank[1].x_pos, tank[1].y_pos);
+	tank[1].tank.setFillColor(Color(244, 66, 232));
+
 	//int amtProj = 5;
 
-	objProjec projVec[5];
+	objProjec projVec[4];
 	for (int a = 0; a < 4; a++)
 	{
 		projVec[a].x_posC = 10 + (a * 20);
@@ -99,6 +116,12 @@ int main()
 
 		window.draw(background);
 		//window.draw(ground);
+		
+		for (int a = 0; a < 2; a++)
+		{
+			window.draw(tank[a].tank);
+		}
+
 		for (int a = 0; a < 4; a++)
 		{
 			window.draw(projVec[a].projectile);
