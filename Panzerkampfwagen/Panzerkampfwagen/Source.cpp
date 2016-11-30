@@ -65,6 +65,10 @@ public:
 
 int main()
 {
+	srand(time(NULL));
+
+	int numberProj1 = 10;
+
 	RectangleShape background(Vector2f(1400, 800));
 	background.setPosition(0, 0);
 	background.setFillColor(Color(204, 51, 77));
@@ -87,13 +91,13 @@ int main()
 
 	//int amtProj = 5;
 
-	objProjec projVec[4];
-	for (int a = 0; a < 4; a++)
+	objProjec projVec[10];
+	for (int a = 0; a < numberProj1; a++)
 	{
 		projVec[a].x_posC = 10 + (a * 20);
 		projVec[a].y_posC = 790;
-		projVec[a].x_velocityC = 150 + (a * 5);
-		projVec[a].y_velocityC = -300;
+		projVec[a].x_velocityC = rand() % 150;
+		projVec[a].y_velocityC = (rand() % 600) * -1;
 		projVec[a].y_accelC = 100;
 		projVec[a].projecReset();
 		projVec[a].projectile.setSize(Vector2f(10, 10));
@@ -122,7 +126,7 @@ int main()
 			window.draw(tank[a].tank);
 		}
 
-		for (int a = 0; a < 4; a++)
+		for (int a = 0; a < numberProj1; a++)
 		{
 			window.draw(projVec[a].projectile);
 		}
@@ -131,7 +135,7 @@ int main()
 		window.display();
 
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
-			for (int a = 0; a < 4; a++)
+			for (int a = 0; a < numberProj1; a++)
 			{
 				projVec[a].counter1 = 1;
 				projVec[a].clock.restart();
@@ -139,7 +143,7 @@ int main()
 		}
 
 
-		for (int a = 0; a < 4; a++)
+		for (int a = 0; a < numberProj1; a++)
 		{
 			if (projVec[a].counter1 == 1){
 				projVec[a].time = projVec[a].clock.getElapsedTime();
@@ -148,7 +152,7 @@ int main()
 			}
 		}
 
-		for (int a = 0; a < 4; a++)
+		for (int a = 0; a < numberProj1; a++)
 		{
 			if (projVec[a].y_pos > 790){
 				projVec[a].projecReset();
