@@ -8,21 +8,6 @@
 using namespace std;
 using namespace sf;
 
-class objTank
-{
-public:
-	string name;
-	int x_pos;
-	int y_pos;
-
-	RectangleShape tank;
-
-	void moveTank()
-	{
-
-	}
-};
-
 class objProjec
 {
 public:
@@ -63,11 +48,25 @@ public:
 	RectangleShape projectile;
 };
 
+class objTank
+{
+public:
+	string name;
+	int x_pos;
+	int y_pos;
+
+	RectangleShape tank;
+	objProjec mainProj;
+
+	void moveTank()
+	{
+
+	}
+};
+
 int main()
 {
 	srand(time(NULL));
-
-	int numberProj1 = 10;
 
 	RectangleShape background(Vector2f(1400, 800));
 	background.setPosition(0, 0);
@@ -78,31 +77,37 @@ int main()
 	ground.setFillColor(Color(51, 153, 204));
 
 	objTank tank[2];
+
 	tank[0].tank.setSize(Vector2f(50, 10));
 	tank[0].x_pos = 40;
 	tank[0].y_pos = 790;
 	tank[0].tank.setPosition(tank[0].x_pos,tank[0].y_pos);
 	tank[0].tank.setFillColor(Color(244,86,66));
+
+	tank[0].mainProj.x_posC = tank[0].x_pos;
+	tank[0].mainProj.y_posC = tank[0].y_pos;
+	tank[0].mainProj.x_velocityC = 300;
+	tank[0].mainProj.y_velocityC = 300 * -1;
+	tank[0].mainProj.y_accelC = 100;
+	tank[0].mainProj.projecReset();
+	tank[0].mainProj.projectile.setSize(Vector2f(10, 10));
+	tank[0].mainProj.projectile.setFillColor(Color(51, 153, 204));
+
 	tank[1].tank.setSize(Vector2f(50, 10));
 	tank[1].x_pos = 1320;
 	tank[1].y_pos = 790;
 	tank[1].tank.setPosition(tank[1].x_pos, tank[1].y_pos);
 	tank[1].tank.setFillColor(Color(244, 66, 232));
 
-	//int amtProj = 5;
+	tank[1].mainProj.x_posC = tank[1].x_pos;
+	tank[1].mainProj.y_posC = tank[1].y_pos;
+	tank[1].mainProj.x_velocityC = -300;
+	tank[1].mainProj.y_velocityC = 300 * -1;
+	tank[1].mainProj.y_accelC = 100;
+	tank[1].mainProj.projecReset();
+	tank[1].mainProj.projectile.setSize(Vector2f(10, 10));
+	tank[1].mainProj.projectile.setFillColor(Color(51, 153, 204));
 
-	objProjec projVec[10];
-	for (int a = 0; a < numberProj1; a++)
-	{
-		projVec[a].x_posC = 10 + (a * 20);
-		projVec[a].y_posC = 790;
-		projVec[a].x_velocityC = rand() % 150;
-		projVec[a].y_velocityC = (rand() % 600) * -1;
-		projVec[a].y_accelC = 100;
-		projVec[a].projecReset();
-		projVec[a].projectile.setSize(Vector2f(10, 10));
-		projVec[a].projectile.setFillColor(Color(51, 153, 204));
-	}
 
 	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen");
 
@@ -124,39 +129,34 @@ int main()
 		for (int a = 0; a < 2; a++)
 		{
 			window.draw(tank[a].tank);
+			window.draw(tank[a].mainProj.projectile);
 		}
-
-		for (int a = 0; a < numberProj1; a++)
-		{
-			window.draw(projVec[a].projectile);
-		}
-
 
 		window.display();
 
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
-			for (int a = 0; a < numberProj1; a++)
+			for (int a = 0; a < 2; a++)
 			{
-				projVec[a].counter1 = 1;
-				projVec[a].clock.restart();
+				tank[a].mainProj.counter1 = 1;
+				tank[a].mainProj.clock.restart();
 			}
 		}
 
 
-		for (int a = 0; a < numberProj1; a++)
+		for (int a = 0; a < 2; a++)
 		{
-			if (projVec[a].counter1 == 1){
-				projVec[a].time = projVec[a].clock.getElapsedTime();
-				projVec[a].clock.restart();
-				projVec[a].moveProj(projVec[a].time);
+			if (tank[a].mainProj.counter1 == 1){
+				tank[a].mainProj.time = tank[a].mainProj.clock.getElapsedTime();
+				tank[a].mainProj.clock.restart();
+				tank[a].mainProj.moveProj(tank[a].mainProj.time);
 			}
 		}
 
-		for (int a = 0; a < numberProj1; a++)
+		for (int a = 0; a < 2; a++)
 		{
-			if (projVec[a].y_pos > 790){
-				projVec[a].projecReset();
-				projVec[a].counter1 = 0;
+			if (tank[a].mainProj.y_pos > 790){
+				tank[a].mainProj.projecReset();
+				tank[a].mainProj.counter1 = 0;
 			}
 		}
 
