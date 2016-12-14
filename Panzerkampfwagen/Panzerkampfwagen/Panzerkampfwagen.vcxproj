@@ -73,10 +73,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="codeMain.cpp" />
+    <ClCompile Include="mainCode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="projectLibs.h" />
+    <ClInclude Include="includeLibs.h" />
+    <ClInclude Include="objProjec.h" />
+    <ClInclude Include="objTank.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

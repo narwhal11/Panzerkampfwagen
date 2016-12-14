@@ -15,12 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="codeMain.cpp">
+    <ClCompile Include="mainCode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="projectLibs.h">
+    <ClInclude Include="objTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objProjec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includeLibs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
