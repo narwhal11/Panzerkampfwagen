@@ -63,6 +63,10 @@ int main()
 
 		window.draw(background);
 		//window.draw(ground);
+
+		if (Keyboard::isKeyPressed(Keyboard::Left)){
+			tank[0].moveTank();
+		}
 		
 		for (int a = 0; a < 2; a++)
 		{
