@@ -4,16 +4,21 @@ class objTank
 {
 public:
 	string name;
-	int x_pos;
+	double x_pos;
 	int y_pos;
 	int angle;
 
 	RectangleShape tank;
 	objProjec mainProj;
 
-	void moveTank()
+	void moveTank(bool left)
 	{
-		x_pos += 100;
+		if (left == true){
+			x_pos += -.01;
+		}
+		if (left == false){
+			x_pos += .01;
+		}
 	}
 
 

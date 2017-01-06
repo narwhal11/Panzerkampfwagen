@@ -63,13 +63,10 @@ int main()
 
 		window.draw(background);
 		//window.draw(ground);
-
-		if (Keyboard::isKeyPressed(Keyboard::Left)){
-			tank[0].moveTank();
-		}
 		
 		for (int a = 0; a < 2; a++)
 		{
+			tank[a].tank.setPosition(tank[a].x_pos, tank[a].y_pos);
 			window.draw(tank[a].tank);
 			window.draw(tank[a].mainProj.projectile);
 		}
@@ -84,13 +81,18 @@ int main()
 			}
 		}
 
+		if (Keyboard::isKeyPressed(Keyboard::Left)){
+			tank[0].moveTank(true);
+		}
+		if (Keyboard::isKeyPressed(Keyboard::Right)){
+			tank[0].moveTank(false);
+		}
 
 		for (int a = 0; a < 2; a++)
 		{
 			if (tank[a].mainProj.counter1 == 1){
 				tank[a].mainProj.time = tank[a].mainProj.clock.getElapsedTime();
 				tank[a].mainProj.clock.restart();
-				tank[a].mainProj.moveProj(tank[a].mainProj.time);
 			}
 		}
 
