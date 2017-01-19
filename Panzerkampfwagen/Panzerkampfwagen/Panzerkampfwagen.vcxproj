@@ -73,12 +73,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="mainCode.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="includeLibs.h" />
     <ClInclude Include="objProjec.h" />
     <ClInclude Include="objTank.h" />
+    <ClInclude Include="textureDeclare.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="HenrySprite.cpp" />
+    <ClCompile Include="mainCode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

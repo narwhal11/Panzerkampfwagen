@@ -1,3 +1,6 @@
+#ifndef includeLibs_HEADER
+#define includeLibs_HEADER
+
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
@@ -7,3 +10,5 @@
 
 using namespace std;
 using namespace sf;
+
+#endif

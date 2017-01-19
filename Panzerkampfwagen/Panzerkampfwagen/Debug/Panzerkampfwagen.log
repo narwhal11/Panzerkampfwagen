@@ -1,22 +1,26 @@
-﻿Build started 1/6/2017 8:32:25 AM.
+﻿Build started 1/19/2017 8:56:06 AM.
      1>Project "E:\GitHub_Code\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Programs\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt mainCode.cpp
-         mainCode.cpp
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\objprojec.h(32): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\objprojec.h(40): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(7): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(22): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(22): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(37): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(37): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(69): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(69): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-       Link:
-         E:\Programs\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\GitHub_Code\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.exe" /INCREMENTAL /NOLOGO "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\GitHub_Code\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\GitHub_Code\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.lib" /MACHINE:X86 Debug\mainCode.obj
-         Panzerkampfwagen.vcxproj -> E:\GitHub_Code\Panzerkampfwagen\Panzerkampfwagen\Debug\Panzerkampfwagen.exe
-     1>Done Building Project "E:\GitHub_Code\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen.vcxproj" (Build target(s)).
+         E:\Programs\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt HenrySprite.cpp
+         HenrySprite.cpp
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(24): error C2065: 'player1lefttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(31): error C2065: 'player2righttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(100): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(101): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(122): error C2065: 'player1lefttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(123): error C2065: 'arm1lefttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(125): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(146): error C2065: 'player2lefttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(147): error C2065: 'arm2lefttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(149): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(170): error C2065: 'player1righttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(171): error C2065: 'arm1righttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(173): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(194): error C2065: 'player2righttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(195): error C2065: 'arm2righttexture' : undeclared identifier
+     1>e:\github_code\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\henrysprite.cpp(197): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>Done Building Project "E:\GitHub_Code\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.57
+Time Elapsed 00:00:01.68
