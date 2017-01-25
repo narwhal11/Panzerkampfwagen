@@ -1,7 +1,4 @@
-#ifndef objProjec_HEADER
-#define objProjec_HEADER
-
-#include "includeLibs.h"
+#include "textureDeclare.h"
 
 class objProjec
 {
@@ -42,5 +39,3 @@ public:
 
 	RectangleShape projectile;
 };
-
-#endif

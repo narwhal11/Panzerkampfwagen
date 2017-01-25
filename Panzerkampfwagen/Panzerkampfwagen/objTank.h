@@ -10,19 +10,27 @@ public:
 	Sprite bodysprite;
 	Sprite armsprite;
 	bool facingleft;
-	int angle;
 	bool hasmoved = false;
+	textureDeclare texDec;
 
-	RectangleShape tank;
 	objProjec mainProj;
+
+	objTank(textureDeclare texD)
+	//objTank()
+	{
+		texDec = texD;
+		bodysprite.setTexture(texDec.player1lefttexture);
+	}
 
 	void moveTank(bool left)
 	{
-		if (left == true){
+		if (Keyboard::isKeyPressed(Keyboard::Left)){
 			x_pos += -.1;
+			bodysprite.setTexture(texDec.player1lefttexture);
 		}
-		if (left == false){
+		if (Keyboard::isKeyPressed(Keyboard::Right)){
 			x_pos += .1;
+			bodysprite.setTexture(texDec.player1righttexture);
 		}
 	}
 
