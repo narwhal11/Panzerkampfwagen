@@ -1,8 +1,9 @@
-﻿Build started 1/26/2017 11:06:41 PM.
+﻿Build started 1/27/2017 12:11:03 AM.
      1>Project "E:\B-Code\GitHub\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen\Panzerkampfwagen.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt mainCode.cpp
          mainCode.cpp
+     1>e:\b-code\github\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\objprojec.h(27): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>e:\b-code\github\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\objprojec.h(37): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>e:\b-code\github\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\objprojec.h(45): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>e:\b-code\github\panzerkampfwagen\panzerkampfwagen\panzerkampfwagen\maincode.cpp(5): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
@@ -17,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.89
+Time Elapsed 00:00:00.61

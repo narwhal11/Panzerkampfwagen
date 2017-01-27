@@ -24,7 +24,7 @@ public:
 
 	objProjec()
 	{
-		projectile.setTexture(texDec.hidden);
+		projectile.setPosition(x_pos, y_pos);
 	}
 
 	void projecReset(double tx_pos, double ty_pos)

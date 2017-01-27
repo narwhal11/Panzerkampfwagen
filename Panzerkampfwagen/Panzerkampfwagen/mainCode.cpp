@@ -26,7 +26,7 @@ int main()
 	tank[0].mainProj.y_velocityC = 300 * -1;
 	tank[0].mainProj.y_accelC = 100;
 	tank[0].mainProj.projecReset(tank[0].x_pos, tank[0].y_pos);
-	tank[0].mainProj.projectile.setScale(Vector2f(.5, .5));
+	tank[0].mainProj.projectile.setScale(Vector2f(1, 1));
 
 	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen"); // Create the Window
 
@@ -71,13 +71,17 @@ int main()
 		for (int a = 0; a < 1; a++)
 		{
 			if (tank[a].mainProj.testAir == 0){
-				tank[a].mainProj.projectile.setTexture(texDec.hidden);
+				tank[a].mainProj.projectile.setTexture(texDec.player1lefttexture);
+				cout << "a";
 			}
+
 			if (tank[a].mainProj.testAir == 1){
 				tank[a].mainProj.projectile.setTexture(texDec.fireball);
 				tank[a].mainProj.time = tank[a].mainProj.clock.getElapsedTime();
 				tank[a].mainProj.moveProj(tank[a].mainProj.time);
 				tank[a].mainProj.clock.restart();
+
+				cout << "b";
 			}
 
 			if (tank[a].mainProj.y_pos > 790){
