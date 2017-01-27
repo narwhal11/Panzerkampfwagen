@@ -24,7 +24,7 @@ int main()
 	tank[0].mainProj.y_posC = tank[0].y_pos;
 	tank[0].mainProj.x_velocityC = 300;
 	tank[0].mainProj.y_velocityC = 300 * -1;
-	tank[0].mainProj.y_accelC = 100;
+	tank[0].mainProj.y_accelC = 200;
 	tank[0].mainProj.projecReset(tank[0].x_pos, tank[0].y_pos);
 	tank[0].mainProj.projectile.setScale(Vector2f(1, 1));
 
@@ -71,7 +71,7 @@ int main()
 		for (int a = 0; a < 1; a++)
 		{
 			if (tank[a].mainProj.testAir == 0){
-				tank[a].mainProj.projectile.setTexture(texDec.player1lefttexture);
+				tank[a].mainProj.projectile.setTexture(texDec.fireball);
 				cout << "a";
 			}
 
