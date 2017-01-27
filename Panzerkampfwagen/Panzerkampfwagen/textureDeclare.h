@@ -11,55 +11,20 @@ public:
 	Texture arm1righttexture;
 	Texture arm2righttexture;
 	Texture arm2lefttexture;
-
+	Texture fireball;
+	Texture hidden;
 
 	textureDeclare(){
-		cout << "Got Here";
-		if (!player1lefttexture.loadFromFile("Wizard_Red_Left.png"))
-		{
-			// error...
-			cout << "Got Here1";
-		}
-		if (!player2lefttexture.loadFromFile("Wizard_Blue_Left.png"))
-		{
-			// error...
-			cout << "Got Here2";
-		}
-		if (!player1righttexture.loadFromFile("Wizard_Red_Right.png"))
-		{
-			// error...
-			cout << "Got Here3";
-		}
-		if (!player2righttexture.loadFromFile("Wizard_Blue_Right.png"))
-		{
-			// error...
-			cout << "Got Here4";
-		}
-		if (!arm1lefttexture.loadFromFile("Wizard_Red_Arm_Left.png"))
-		{
-			// error...
-		}
-		if (!arm1righttexture.loadFromFile("Wizard_Red_Arm_Right.png"))
-		{
-			// error...
-		}
-		if (!arm2righttexture.loadFromFile("Wizard_Blue_Arm_Right.png"))
-		{
-			// error...
-		}
-		if (!arm2lefttexture.loadFromFile("Wizard_Blue_Arm_Left.png"))
-		{
-			//error...
-		}
-
-		//player1lefttexture.loadFromFile("Wizard_Red_Left.png");
-		//player2lefttexture.loadFromFile("Wizard_Blue_Left.png");
-		//player1righttexture.loadFromFile("Wizard_Red_Right.png");
-		//player2righttexture.loadFromFile("Wizard_Blue_Right.png");
-		//arm1lefttexture.loadFromFile("Wizard_Red_Arm_Left.png");
-		//arm1righttexture.loadFromFile("Wizard_Red_Arm_Right.png");
-		//arm2righttexture.loadFromFile("Wizard_Blue_Arm_Right.png");
-		//arm2lefttexture.loadFromFile("Wizard_Blue_Arm_Left.png");
-
+		if (!player1lefttexture.loadFromFile("Wizard_Red_Left.png")){  }
+		if (!player2lefttexture.loadFromFile("Wizard_Blue_Left.png")){  }
+		if (!player1righttexture.loadFromFile("Wizard_Red_Right.png")){  }
+		if (!player2righttexture.loadFromFile("Wizard_Blue_Right.png")){  }
+		if (!arm1lefttexture.loadFromFile("Wizard_Red_Arm_Left.png")){  }
+		if (!arm1righttexture.loadFromFile("Wizard_Red_Arm_Right.png")){  }
+		if (!arm2righttexture.loadFromFile("Wizard_Blue_Arm_Right.png")){  }
+		if (!arm2lefttexture.loadFromFile("Wizard_Blue_Arm_Left.png")){  }
+		if (!fireball.loadFromFile("fireBall.png")){  }
+		if (!hidden.loadFromFile("Hidden.png")){  }
 	}
+
 };

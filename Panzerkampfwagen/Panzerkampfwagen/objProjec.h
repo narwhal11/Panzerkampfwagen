@@ -15,14 +15,22 @@ public:
 	double y_velocityC;
 	double y_accelC;
 	int type = 0;
-	int counter1 = 0;
+	int testAir = 0;
 	Clock clock;
 	Time time;
 
-	void projecReset()
+	textureDeclare texDec;
+	Sprite projectile;
+
+	objProjec()
 	{
-		x_pos = x_posC;
-		y_pos = y_posC;
+		projectile.setTexture(texDec.hidden);
+	}
+
+	void projecReset(double tx_pos, double ty_pos)
+	{
+		x_pos = tx_pos;
+		y_pos = ty_pos;
 		x_velocity = x_velocityC;
 		y_velocity = y_velocityC;
 		y_accel = y_accelC;
@@ -36,6 +44,4 @@ public:
 		y_pos += (y_velocity * time1.asSeconds());
 		projectile.setPosition(x_pos, y_pos);
 	}
-
-	RectangleShape projectile;
 };

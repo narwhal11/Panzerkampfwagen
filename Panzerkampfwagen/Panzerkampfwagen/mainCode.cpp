@@ -6,33 +6,31 @@ int main()
 
 	textureDeclare texDec;
 
+	// Create the background
 	RectangleShape background(Vector2f(1400, 800));
 	background.setPosition(0, 0);
-	background.setFillColor(Color(204, 51, 77));
+	background.setFillColor(Color(60, 60, 60));
 
-	RectangleShape ground(Vector2f(1400, 200));
-	ground.setPosition(0, 600);
-	ground.setFillColor(Color(51, 153, 204));
+	objTank tank[1]; // This is the vector that holds all of the players
 
-	objTank tank[1] = { objTank(texDec) };
-
-	tank[0].bodysprite.setScale(Vector2f(50, 10));
+	// Set basic info for our test player
 	tank[0].x_pos = 40;
-	tank[0].y_pos = 790;
-	tank[0].bodysprite.setPosition(tank[0].x_pos,tank[0].y_pos);
+	tank[0].y_pos = 740;
+	tank[0].bodySprite.setPosition(tank[0].x_pos,tank[0].y_pos);
+	tank[0].bodySprite.setScale(1.0f, 1.0f);
 
-	//tank[0].mainProj.x_posC = tank[0].x_pos;
-	//tank[0].mainProj.y_posC = tank[0].y_pos;
-	//tank[0].mainProj.x_velocityC = 300;
-	//tank[0].mainProj.y_velocityC = 300 * -1;
-	//tank[0].mainProj.y_accelC = 100;
-	//tank[0].mainProj.projecReset();
-	//tank[0].mainProj.projectile.setSize(Vector2f(10, 10));
-	//tank[0].mainProj.projectile.setFillColor(Color(51, 153, 204));
+	// Set basic values for our test projectile
+	tank[0].mainProj.x_posC = tank[0].x_pos;
+	tank[0].mainProj.y_posC = tank[0].y_pos;
+	tank[0].mainProj.x_velocityC = 300;
+	tank[0].mainProj.y_velocityC = 300 * -1;
+	tank[0].mainProj.y_accelC = 100;
+	tank[0].mainProj.projecReset(tank[0].x_pos, tank[0].y_pos);
+	tank[0].mainProj.projectile.setScale(Vector2f(.5, .5));
 
-	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen");
+	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen"); // Create the Window
 
-	while (window.isOpen()){
+	while (window.isOpen()){ // Basic window code
 
 		Event event1;
 		while (window.pollEvent(event1))
@@ -42,16 +40,15 @@ int main()
 			}
 		}
 
-		window.clear();
+		window.clear(); // Clear window
 
-		window.draw(background);
-		//window.draw(ground);
+		window.draw(background); // Draw basic window components
 		
 		for (int a = 0; a < 1; a++)
 		{
-			tank[a].bodysprite.setPosition(tank[a].x_pos, tank[a].y_pos);
-			window.draw(tank[a].bodysprite);
-			//window.draw(tank[a].mainProj.projectile);
+			tank[a].bodySprite.setPosition(tank[a].x_pos, tank[a].y_pos);
+			window.draw(tank[a].bodySprite);
+			window.draw(tank[a].mainProj.projectile);
 		}
 
 		window.display();
@@ -59,8 +56,11 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
 			for (int a = 0; a < 1; a++)
 			{
-				tank[a].mainProj.counter1 = 1;
-				tank[a].mainProj.clock.restart();
+				if (tank[a].mainProj.testAir != 1) {
+					tank[a].mainProj.projecReset(tank[0].x_pos, tank[0].y_pos);
+					tank[a].mainProj.testAir = 1;
+					tank[a].mainProj.clock.restart();
+				}
 			}
 		}
 
@@ -70,17 +70,19 @@ int main()
 
 		for (int a = 0; a < 1; a++)
 		{
-			if (tank[a].mainProj.counter1 == 1){
+			if (tank[a].mainProj.testAir == 0){
+				tank[a].mainProj.projectile.setTexture(texDec.hidden);
+			}
+			if (tank[a].mainProj.testAir == 1){
+				tank[a].mainProj.projectile.setTexture(texDec.fireball);
 				tank[a].mainProj.time = tank[a].mainProj.clock.getElapsedTime();
+				tank[a].mainProj.moveProj(tank[a].mainProj.time);
 				tank[a].mainProj.clock.restart();
 			}
-		}
 
-		for (int a = 0; a < 1; a++)
-		{
 			if (tank[a].mainProj.y_pos > 790){
-				tank[a].mainProj.projecReset();
-				tank[a].mainProj.counter1 = 0;
+				tank[a].mainProj.projecReset(tank[0].x_pos, tank[0].y_pos);
+				tank[a].mainProj.testAir = 0;
 			}
 		}
 
