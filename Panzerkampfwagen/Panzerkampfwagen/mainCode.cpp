@@ -18,6 +18,7 @@ int main()
 	tank[0].y_pos = 740;
 	tank[0].bodySprite.setPosition(tank[0].x_pos,tank[0].y_pos);
 	tank[0].bodySprite.setScale(1.0f, 1.0f);
+	tank[0].facingleft = true;
 
 	// Set basic values for our test projectile
 	tank[0].mainProj.x_posC = tank[0].x_pos;
@@ -29,6 +30,7 @@ int main()
 	tank[0].mainProj.projectile.setScale(Vector2f(1, 1));
 
 	RenderWindow window(VideoMode(1400, 800), "Panzerkampfwagen"); // Create the Window
+	window.setFramerateLimit(60);
 
 	while (window.isOpen()){ // Basic window code
 
@@ -47,7 +49,10 @@ int main()
 		for (int a = 0; a < 1; a++)
 		{
 			tank[a].bodySprite.setPosition(tank[a].x_pos, tank[a].y_pos);
+			tank[a].armSprite.setOrigin(23, 3);
+			tank[a].armSprite.setPosition(tank[a].x_pos + 14, tank[a].y_pos + 27);
 			window.draw(tank[a].bodySprite);
+			window.draw(tank[a].armSprite);
 			window.draw(tank[a].mainProj.projectile);
 		}
 
@@ -66,6 +71,10 @@ int main()
 
 		if (Keyboard::isKeyPressed(Keyboard::Left) | Keyboard::isKeyPressed(Keyboard::Right)){
 			tank[0].moveTank(true);
+		}
+
+		if (Keyboard::isKeyPressed(Keyboard::Up) | Keyboard::isKeyPressed(Keyboard::Down)){
+			tank[0].moveArm();
 		}
 
 		for (int a = 0; a < 1; a++)
